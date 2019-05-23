@@ -6,7 +6,7 @@ const https = require('https');
 const fs = require('fs');
 
 const clientId = "slimechipsuse01";
-const clientSecret = "NW8VCO-6VvIYJ6zsVFeLhhgr";
+const clientSecret = "NW8VCO-6VvlYJ6zsVFeLhhgr";
 const appUri = "slimechips01.azurewebsites.net";
 const basePath = "sandbox.api.ndi.gov.sg";
 
