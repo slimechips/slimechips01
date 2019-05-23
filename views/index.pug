@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  body
+    h1= title
+    p.
+      Welcome to #{title}. Please Login.
+      The following button will redirect you to NDI registration portal.
+
+    // Wrapper
+    #wrapper
+      form(action="/redirectNDI", method='GET')
+        input(type='submit', value='Login using NDI', name='Submit', 
+        id='submit_btm')
+    // /Wrapper
