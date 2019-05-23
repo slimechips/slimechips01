@@ -5,9 +5,9 @@ const url = require('url');
 const https = require('https');
 const fs = require('fs');
 
-const clientId = "slimechipsuse1a";
-const clientSecret = "5-mF2Cjkbtyb8tRzxSbOMNcd";
-const appUri = "http://localhost:3000";
+const clientId = "slimechipsuse01";
+const clientSecret = "NW8VCO-6VvIVJ6zsVFeLhhgr";
+const appUri = "slimechips01.azurewebsites.net";
 const basePath = "sandbox.api.ndi.gov.sg";
 
 /* GET home page. */
