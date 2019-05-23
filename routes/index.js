@@ -57,6 +57,10 @@ router.get('/', (req, res, next) => {
   postReq.end();
 });
 
+router.post('/', (req, res) => {
+  console.log(`post from asp ${req.body}`);
+});
+
 module.exports = router;
 
 function generateAlphaNum() {
