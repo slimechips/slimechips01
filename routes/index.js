@@ -9,7 +9,7 @@ const basePath = "https://sandbox.api.ndi.gov.sg";
 /* GET login page. */
 router.get('/', (req, res, next) => {
   res.render('index', { title: 'Horizontal Bank Internet Banking' });
-  
+  console.log(appUri, basePath);
 });
 
 // GET Redirect, redirects user to ASP
