@@ -1,8 +1,8 @@
 version: '2.1'
 
 services:
-  use1:
-    image: use1
+  use2:
+    image: use2
     build: .
     environment:
       NODE_ENV: development

@@ -9,7 +9,16 @@ block content
 
     // Wrapper
     #wrapper
-      form(action="/redirectNDI", method='GET')
+      form(action="/redirect", method='GET')
+        h2 Amount to Transfer
+        input(type='text', name='amt_transfer')
+        h2 Payee Account
+        input(type='text', name='payee_acct')
+        br
+        br
+        img(src=qrSrc, id="qr-code", height="350px", width="350px")     
+        br
+        br
         input(type='submit', value='Login using NDI', name='Submit', 
         id='submit_btm')
     // /Wrapper
