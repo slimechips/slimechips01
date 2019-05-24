@@ -50,7 +50,7 @@ router.get('/', (req, res, next) => {
       
       setTimeout(() => {
         clearInterval(myPoll);
-      }, 20000);
+      }, 50000);
 
       res.end();
     });
