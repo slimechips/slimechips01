@@ -3,7 +3,6 @@ const router = express.Router();
 
 const url = require('url');
 const https = require('https');
-const fs = require('fs');
 
 const clientId = "slimechips01";
 const clientSecret = "NW8VCO-6VvIYJ6zsVFeLhhgr";
@@ -44,7 +43,19 @@ router.get('/', (req, res, next) => {
                             qrSrc: qrSrc });
       let authReqId = JSON.parse(d.toString('utf8')).auth_req_id;
 
-      pollForToken(authReqId);
+      const promiseToken = new Promise((resolve, reject) => {
+        let accessToken = pollForToken(authReqId);
+        if (accessToken) resolve(accessToken);
+        else reject();
+      });
+
+      promiseToken.then((idToken) => {
+        console.log(`idToken : ${idToken}`);
+      }, 
+      () => {
+        // Do nothing
+        console.log("Token was not received");
+      });
     });
   });
   postReq.on('error', (error) => {

@@ -3,17 +3,17 @@ const router = express.Router();
 const mcache = require('memory-cache');
 
 router.post('/', (req, res) => {
-  let authReqId = null,
+  let idToken = null,
     accessToken = null,
     duration = null;
   console.log("posted" + req.body);
-  if (req.body["auth_req_id"]) {
-    authReqId = req.body["auth_req_id"];
+  if (req.body["id_token"]) {
+    idToken = req.body["id_token"];
     accessToken = req.body["access_token"];
     duration = req.body["expires_in"];
     console.log("Login success");
 
-    mcache.put(authReqId, accessToken, duration*1000);
+    mcache.put(idToken, accessToken, duration*1000);
     console.log(`mcache ${mcache}`);
   }
 });
@@ -23,11 +23,11 @@ router.post('/poll', (req, res) => {
   const myPromise = new Promise((resolve, reject) => {
     const MAX_POLL_COUNT = 20;
     let currentPollCount = 0;
-    let authReqId = req.body["auth_req_id"];
-    if (!authReqId) return;
+    let idToken = req.body["id_token"];
+    if (!idToken) return;
 
     const myInterval = setInterval(() => {
-      let accessToken = mcache.get(authReqId);
+      let accessToken = mcache.get(idToken);
   
       if (!accessToken) {
         console.log(`Invalid token`);
@@ -46,8 +46,8 @@ router.post('/poll', (req, res) => {
     }, 3000);
   });
 
-  myPromise.then((accessToken) => {
-    res.send({ access_token: accessToken });
+  myPromise.then((idToken) => {
+    res.send({ id_token: idToken });
     res.end();
   }, 
   (error) => {
