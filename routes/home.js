@@ -13,7 +13,8 @@ router.post('/', (req, res) => {
     duration = req.body["expires_in"];
     console.log("Login success");
 
-    mcache.put(authReqId, accessToken, duration);
+    mcache.put(authReqId, accessToken, duration*1000);
+    console.log(`mcache ${mcache}`);
   }
 });
 
