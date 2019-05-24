@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/', (req, res) => {
-  console.log("posted " + req.body);
+  const authReqId = null;
+  if (req.body["auth_req_id"]) {
+    authReqId = req.body["auth_req_id"]
+    console.log("Login success");
+  }
 });
 module.exports = router;
