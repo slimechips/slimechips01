@@ -43,9 +43,9 @@ router.get('/', (req, res, next) => {
       res.render('index', { title: 'Horizon Bank Internet Banking Fund Transfer',
                             qrSrc: qrSrc });
       let authReqId = JSON.parse(d.toString('utf8')).auth_req_id;
-      const myPoll = setInterval(() => {
-        pollForToken(authReqId);
-      }, 5000);
+      // const myPoll = setInterval(() => {
+      //   pollForToken(authReqId);
+      // }, 5000);
       res.end();
     });
   });
