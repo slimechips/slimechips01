@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const mcache = require('memory-cache');
-const url = require('url');
 
 router.post('/', (req, res) => {
   let authReqId = null,
@@ -23,9 +22,10 @@ router.post('/poll', (req, res) => {
   const myPromise = new Promise((resolve, reject) => {
     const MAX_POLL_COUNT = 20;
     let currentPollCount = 0;
+    let authReqId = req.body["auth_req_id"];
+    if (!authReqId) return;
+
     setInterval(() => {
-      let authReqId = url.parse(req.url).query["auth_req_id"];
-      if (!authReqId) return;
       let accessToken = mcache.get(authReqId);
   
       if (!accessToken) {

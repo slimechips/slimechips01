@@ -44,15 +44,7 @@ router.get('/', (req, res, next) => {
                             qrSrc: qrSrc });
       let authReqId = JSON.parse(d.toString('utf8')).auth_req_id;
 
-      const myPoll = setInterval(() => {
-        pollForToken(authReqId);
-      }, 3000);
-      
-      setTimeout(() => {
-        clearInterval(myPoll);
-      }, 50000);
-
-      res.end();
+      pollForToken(authReqId);
     });
   });
   postReq.on('error', (error) => {
