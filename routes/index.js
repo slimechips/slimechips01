@@ -44,7 +44,7 @@ router.get('/', (req, res, next) => {
                             qrSrc: qrSrc });
       let authReqId = JSON.parse(d.toString('utf8')).auth_req_id;
 
-      pollForToken(authReqId, res);
+      pollForToken(authReqId);
     });
   });
   postReq.on('error', (error) => {
@@ -65,7 +65,7 @@ function generateAlphaNum() {
   return Math.random().toString(36).replace('0.', '');
 }
 
-function pollForToken(authReqId, res) {
+function pollForToken(authReqId) {
   const data = JSON.stringify({
     client_id: clientId,
     client_secret: clientSecret,
@@ -95,7 +95,6 @@ function pollForToken(authReqId, res) {
         accessToken = myData["access_token"];
       }
       console.log(`Access_token ${accessToken}`);
-      res.write(`Access_token ${accessToken}`);
     });
   });
 
