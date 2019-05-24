@@ -81,9 +81,9 @@ function pollForToken(authReqId) {
     auth_req_id: authReqId
   });
   const options = {
-    hostname: basePath,
+    hostname: appUri,
     port: 443,
-    path: '/asp/api/v1/asp/token',
+    path: '/home/poll',
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
