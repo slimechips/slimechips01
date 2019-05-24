@@ -3,6 +3,7 @@ const router = express.Router();
 
 router.post('/', (req, res) => {
   const authReqId = null;
+  console.log("posted" + req.body);
   if (req.body["auth_req_id"]) {
     authReqId = req.body["auth_req_id"]
     console.log("Login success");
