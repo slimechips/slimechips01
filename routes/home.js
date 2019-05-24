@@ -25,7 +25,7 @@ router.post('/poll', (req, res) => {
     let authReqId = req.body["auth_req_id"];
     if (!authReqId) return;
 
-    setInterval(() => {
+    const myInterval = setInterval(() => {
       let accessToken = mcache.get(authReqId);
   
       if (!accessToken) {
@@ -33,10 +33,12 @@ router.post('/poll', (req, res) => {
         ++currentPollCount;
       }
       else {
+        clearInterval(myInterval);
         resolve(accessToken);
       }
 
       if (currentPollCount >= MAX_POLL_COUNT) {
+        clearInterval(myInterval);
         console.log("ending poll");
         reject("Ending Poll");
       }
