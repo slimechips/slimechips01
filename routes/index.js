@@ -86,7 +86,7 @@ function pollForToken(authReqId) {
   };
 
   const postReq = https.request(options, (res) => {
-    console.log(`Status Code: ${res.statusCode}`);
+    console.log(`Status Code: ${res.statusCode} \n`);
     let myData;
     res.on('data', (d) => {
       process.stdout.write(d);
